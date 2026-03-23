@@ -1,0 +1,172 @@
+/* =============================
+   VARIABLES GLOBALES
+   =============================
+   :root correspond à <html>.
+   On y définit des variables CSS (custom properties)
+   qui pourront être réutilisées partout avec var(--nom).
+*/
+:root {
+  --max-width: 900px;   /* largeur maximale du contenu */
+  --gap: 1rem;          /* espacement standard (1rem = taille police) */
+  --accent: #7db576;    /* couleur principale du site */
+}
+
+/* =============================
+   RESET GLOBAL
+   =============================
+   Le sélecteur universel (*) sélectionne TOUS les éléments.
+   Ici on utilise box-sizing: border-box pour que
+   width/height incluent les bordures + paddings.
+   C’est une bonne pratique moderne.
+*/
+* {
+  box-sizing: border-box;
+}
+
+/* =============================
+   STYLE GLOBAL DU BODY
+   =============================
+   <body> contient tout le contenu visible de la page.
+   On définit ici la police, la couleur de fond et
+   les marges par défaut.
+*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* =============================
+   LAYOUT PRINCIPAL
+   =============================
+   <main> est l’élément central de la page.
+   On limite sa largeur et on le centre.
+   Flexbox est utilisé pour empiler les éléments
+   verticalement avec un espacement.
+*/
+main {
+  max-width: var(--max-width); /* largeur max définie en :root */
+  margin: 0 auto;              /* centre horizontalement */
+  padding: 2rem;
+  display: grid;
+  /* flex-direction: column; */
+  gap: var(--gap);
+}
+
+/* =============================
+   TITRES
+   =============================
+   On centre le titre principal.
+*/
+h1 {
+  text-align: center;
+  color: var(--accent);
+}
+
+/* =============================
+   FORMULAIRES
+   =============================
+   Les formulaires sont affichés en colonne.
+   Chaque champ prend 100% de la largeur dispo.
+*/
+form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+label {
+  display: flex; 
+  flex-direction: column;
+  font-weight: bold;
+}
+input, button {
+  padding: .5rem;
+  font-size: 1rem;
+}
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.9; /* effet visuel au survol */
+}
+
+/* =============================
+   TABLEAUX
+   =============================
+   Utilisés pour la liste des groupes.
+   On ajoute des bordures et un style simple.
+*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #d2e1d7;
+  padding: .5rem;
+  text-align: left;
+}
+th {
+  background: #82a686;
+}
+
+/* =============================
+   LIENS
+   =============================
+   On harmonise les liens pour qu’ils reprennent
+   la couleur principale (--accent).
+*/
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   CLASSE TOPROW
+   =============================
+   Utilisée dans le header pour aligner le titre 
+   et le bouton de déconnexion sur la même ligne.
+*/
+.toprow {
+  display: flex;
+  justify-content: space-between; /* Espace le titre à gauche et le bouton à droite */
+  align-items: center;            /* Aligne verticalement au centre */
+  border-bottom: 2px solid var(--accent); /* Ajoute une ligne de séparation subtile */
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Ajustement pour que le H1 dans toprow ne prenne pas toute la marge */
+.toprow h1 {
+  margin: 0;
+  text-align: left; /* Aligné à gauche dans ce contexte spécifique */
+}
+
+/* =============================
+   RESPONSIVE DESIGN
+   =============================
+   Quand l’écran fait moins de 600px de large,
+   on transforme le tableau en "liste" verticale
+   pour que ce soit lisible sur mobile.
+*/
+@media (max-width: 600px) {
+  table, thead, tbody, tr, th, td {
+    display: block;
+  }
+  tr {
+    margin-bottom: 1rem;
+  }
+  th {
+    background: none;
+    font-weight: bold;
+  }
+}

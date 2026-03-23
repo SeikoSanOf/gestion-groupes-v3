@@ -1,0 +1,19 @@
+# Fichiers temporaires
+*.tmp
+*.temp
+*.log
+*.swp
+*~
+  
+# Fichiers de sauvegarde
+*.bak
+*.old
+# Fichiers PHP-CS-Fixer
+.php-cs-fixer.cache
+.php-cs-fixer.php~
+  
+# Fichiers IDE 
+.vscode/
+
+# Autres
+lint.bat
