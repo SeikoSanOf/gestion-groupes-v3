@@ -14,6 +14,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          tools: php-cs-fixer
           coverage: none
 
       - name: Validate PHP syntax (Linter)
@@ -21,6 +22,4 @@ jobs:
           find . -type f -name "*.php" -print0 | xargs -0 -n1 php -l
 
       - name: Run PHP-CS-Fixer (PHP-CS-Fixer)
-        run: |
-          curl -L https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.40.0/php-cs-fixer.phar -o php-cs-fixer.phar
-          php php-cs-fixer.phar fix --dry-run --diff --rules=@PSR12 .
+        run: php-cs-fixer fix --dry-run --diff --rules=@PSR12.
