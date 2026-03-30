@@ -17,9 +17,12 @@ jobs:
           tools: php-cs-fixer
           coverage: none
 
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
+        
       - name: Validate PHP syntax (Linter)
         run: |
           find . -type f -name "*.php" -print0 | xargs -0 -n1 php -l
 
       - name: Run PHP-CS-Fixer (PHP-CS-Fixer)
-        run: vendor/bin/php-cs-fixer fix
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff --ansi
