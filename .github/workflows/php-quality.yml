@@ -22,4 +22,4 @@ jobs:
           find . -type f -name "*.php" -print0 | xargs -0 -n1 php -l
 
       - name: Run PHP-CS-Fixer (PHP-CS-Fixer)
-        run: php-cs-fixer fix --dry-run --diff --rules=@PSR12.
+        run: vendor/bin/php-cs-fixer fix
