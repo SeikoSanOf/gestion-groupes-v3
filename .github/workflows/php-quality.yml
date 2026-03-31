@@ -14,12 +14,16 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          tools: php-cs-fixer:3.64.0
+          tools: php-cs-fixer:3.64.0 # On force une version récente ici
           coverage: none
+
+      - name: Check PHP-CS-Fixer Version
+        run: php-cs-fixer --version # Juste pour vérifier dans les logs que c'est bien la 3.64
 
       - name: Validate PHP syntax (Linter)
         run: |
           find . -type f -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
 
       - name: Run PHP-CS-Fixer
+        # On s'assure qu'on n'utilise PAS un .phar qui traîne dans le dossier
         run: php-cs-fixer fix --dry-run --diff --ansi
