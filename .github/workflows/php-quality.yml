@@ -14,7 +14,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          # On demande explicitement une version supérieure à 3.43
+          # On demande spécifiquement une version qui comprend 'setParallelConfig'
           tools: php-cs-fixer:3.64.0 
           coverage: none
 
@@ -23,6 +23,7 @@ jobs:
           find . -type f -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
 
       - name: Run PHP-CS-Fixer
-        # IMPORTANT : On utilise 'php-cs-fixer' (installé par setup-php) 
-        # et SURTOUT PAS './php-cs-fixer.phar' (votre vieux fichier)
+        # ATTENTION : On appelle 'php-cs-fixer' TOUT COURT.
+        # Ne mettez surtout pas './php-cs-fixer.phar' ici, 
+        # sinon il utilisera votre vieux fichier cassé.
         run: php-cs-fixer fix --dry-run --diff --ansi
