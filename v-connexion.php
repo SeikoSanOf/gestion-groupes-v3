@@ -11,7 +11,7 @@
         <label>Mot de passe : <input type="password" name="motdepasse" required></label>
         <button type="submit">Se connecter</button>
     </form>
-    <?php if ($message): ?><p class="error"><?= $message ?></p><?php endif; ?>
+    <?php if ($message) { ?><p class="error"><?php echo $message; ?></p><?php } ?>
 </main>
 </body>
 </html>
