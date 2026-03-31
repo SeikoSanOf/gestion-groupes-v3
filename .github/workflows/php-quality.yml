@@ -26,4 +26,6 @@ jobs:
         # ATTENTION : On appelle 'php-cs-fixer' TOUT COURT.
         # Ne mettez surtout pas './php-cs-fixer.phar' ici, 
         # sinon il utilisera votre vieux fichier cassé.
-        run: php-cs-fixer fix --dry-run --diff --ansi
+        run: 
+          php-cs-fixer fix --dry-run --diff --ansi
+          php-cs-fixer --version
