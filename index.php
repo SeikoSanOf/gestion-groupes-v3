@@ -1,7 +1,6 @@
 <?php
 require_once 'gestionBd.php';
 
-// Détermination de l'action (par défaut 'liste' si connecté, sinon 'connexion')
 $action = $_REQUEST['action'] ?? 'liste';
 
 // Sécurité : redirection vers connexion si non connecté (sauf si on tente de se connecter)
@@ -9,7 +8,6 @@ if (!isset($_SESSION['user_id']) && $action !== 'connexion') {
     $action = 'connexion';
 }
 
-// Variables d'affichage communes
 $errors = [];
 $success = false;
 $message = "";
