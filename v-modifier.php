@@ -10,37 +10,37 @@
 <main>
     <h1>Modifier le groupe</h1>
 
-    <?php if ($success): ?>
+    <?php if ($success) { ?>
         <p class="ok">Modification enregistrée. <a href="index.php?action=liste">Retour à la liste</a></p>
-    <?php endif; ?>
+    <?php } ?>
 
-    <?php if (!empty($errors)): ?>
+    <?php if (!empty($errors)) { ?>
         <ul class="error">
-            <?php foreach ($errors as $err): ?>
-                <li><?= htmlspecialchars($err) ?></li>
-            <?php endforeach; ?>
+            <?php foreach ($errors as $err) { ?>
+                <li><?php echo htmlspecialchars($err); ?></li>
+            <?php } ?>
         </ul>
-    <?php endif; ?>
+    <?php } ?>
 
-    <form method="post" action="index.php?action=modification&id=<?= (int)$groupe['id'] ?>">
-        <label>Nom: 
-            <input type="text" name="nom" value="<?= htmlspecialchars($_POST['nom'] ?? $groupe['nom']) ?>">
+    <form method="post" action="index.php?action=modification&id=<?php echo (int) $groupe['id']; ?>">
+        <label>Nom:
+            <input type="text" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? $groupe['nom']); ?>">
         </label>
-        
-        <label>Adresse: 
-            <input type="text" name="adresse" value="<?= htmlspecialchars($_POST['adresse'] ?? $groupe['adressePostale']) ?>">
+
+        <label>Adresse:
+            <input type="text" name="adresse" value="<?php echo htmlspecialchars($_POST['adresse'] ?? $groupe['adressePostale']); ?>">
         </label>
-        
-        <label>Nombre de personnes: 
-            <input type="number" name="nombrePersonnes" value="<?= htmlspecialchars($_POST['nombrePersonnes'] ?? $groupe['nombrePersonnes']) ?>" min="1">
+
+        <label>Nombre de personnes:
+            <input type="number" name="nombrePersonnes" value="<?php echo htmlspecialchars($_POST['nombrePersonnes'] ?? $groupe['nombrePersonnes']); ?>" min="1">
         </label>
-        
-        <label>Pays: 
-            <input type="text" name="nomPays" value="<?= htmlspecialchars($_POST['nomPays'] ?? $groupe['nomPays']) ?>">
+
+        <label>Pays:
+            <input type="text" name="nomPays" value="<?php echo htmlspecialchars($_POST['nomPays'] ?? $groupe['nomPays']); ?>">
         </label>
-        
+
         <label>
-            <input type="checkbox" name="hebergement" <?= ((isset($_POST['hebergement']) || (!isset($_POST['nom']) && $groupe['hebergement'])) ? 'checked' : '') ?>> 
+            <input type="checkbox" name="hebergement" <?php echo (isset($_POST['hebergement']) || (!isset($_POST['nom']) && $groupe['hebergement'])) ? 'checked' : ''; ?>>
             Hébergement
         </label>
 
